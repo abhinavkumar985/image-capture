@@ -1,0 +1,35 @@
+<p-dialog
+  header="Take Image"
+  [(visible)]="showImageTaker"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ width: 'auto', height: '500px' }"
+  [minY]="70"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+>
+  <div class="camera">
+    <webcam
+      [height]="300"
+      [width]="300"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch"
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+  </div>
+  <div class="snapshot" >
+    <img [src]="webcamImage.imageAsDataUrl"  *ngIf="webcamImage" [height]="300"
+    [width]="300"/>
+  </div>
+  <p-footer>
+    <button type="button" (click)="triggerSnapshot()">Capture</button>
+    <button type="button" (click)="done()">Done</button>
+    <button type="button" (click)="exit()">Cancel</button>
+  </p-footer>
+</p-dialog>

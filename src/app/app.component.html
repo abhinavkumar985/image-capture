@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <table border="1" style="width:100%">
+    <thead>
+      <tr style="height:40px">
+      <th style="width:30%">Name</th>
+      <th style="width:30%"> Age</th>
+      <th style="width:30%"> Image</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data" style="height:40px">
+        <th style="width:30%">{{item.name}}</th>
+        <th style="width:30%">{{item.name}}</th>
+        <th style="width:30%">
+          <div *ngIf="item.image=== null"> <button (click)="openImagePopUp(item)">Take Pciture</button></div>
+          <div *ngIf="item.image!== null">  <img [src]="item.image" /></div>
+          
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-image-taker *ngIf="showImageTaker" [showImageTaker]="showImageTaker" (close)="closePopUp()" (captured)="imageCaptured($event)"></app-image-taker>
