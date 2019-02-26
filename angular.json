@@ -28,7 +28,8 @@
               "node_modules/primeng/resources/themes/omega/theme.css",
               "node_modules/primeicons/primeicons.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
