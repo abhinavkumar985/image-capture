@@ -26,13 +26,14 @@ export class ImageTakerComponent implements OnChanges {
     this.webcamImage = null;
     setTimeout(()=>{
       this.Webcam.attach( '#my_camera' );
-    },500)
+    },700)
     
   }
 
   exit() {
     this.close.emit();
     this.showImageTaker = false;
+    this.Webcam.reset();
   }
   capture() {
     try {
@@ -47,5 +48,6 @@ export class ImageTakerComponent implements OnChanges {
     // this.trigger.next();
     this.captured.emit({ data: this.webcamImage });
     this.showImageTaker = false;
+    this.Webcam.reset();
   }
 }
