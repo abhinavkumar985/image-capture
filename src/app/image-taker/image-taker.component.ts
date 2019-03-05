@@ -16,18 +16,28 @@ export class ImageTakerComponent implements OnChanges {
   @Output("close") close = new EventEmitter<any>();
   @Input() showImageTaker;
   private webcamImage = null;
-  private Webcam= null;
-  constructor(){
-    if(window['Webcam']){
-      this.Webcam = window['Webcam']
+  private Webcam = null;
+  constructor() {
+    if (window["Webcam"]) {
+      this.Webcam = window["Webcam"];
     }
   }
   ngOnChanges() {
     this.webcamImage = null;
-    setTimeout(()=>{
-      this.Webcam.attach( '#my_camera' );
-    },700)
-    
+    setTimeout(() => {
+      this.Webcam.set({
+        width: 360,
+        height: 360,
+        dest_width: 360,
+        dest_height: 360,
+        image_format: "jpeg",
+        jpeg_quality: 100,
+        force_flash: false,
+        flip_horiz: false,
+        fps: 45
+      });
+      this.Webcam.attach("#my_camera");
+    }, 700);
   }
 
   exit() {
@@ -37,10 +47,8 @@ export class ImageTakerComponent implements OnChanges {
   }
   capture() {
     try {
-      this.Webcam.snap((data_uri) =>{
-        document.getElementById("my_result").innerHTML =
-          '<img src="' + data_uri + '"/>';
-          this.webcamImage = data_uri;
+      this.Webcam.snap(data_uri => {
+        this.webcamImage = data_uri;
       });
     } catch (e) {}
   }

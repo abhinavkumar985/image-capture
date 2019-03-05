@@ -4,7 +4,6 @@ import {DialogModule} from 'primeng/dialog';
 import { AppComponent } from './app.component';
 import { ImageTakerComponent } from './image-taker/image-taker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {WebcamModule} from 'ngx-webcam';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +13,7 @@ import {WebcamModule} from 'ngx-webcam';
     BrowserModule,
     DialogModule,
     BrowserAnimationsModule,
-    WebcamModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,33 +3,35 @@
   [(visible)]="showImageTaker"
   [modal]="true"
   [responsive]="true"
-  [style]="{ width: 'auto', height: '500px' }"
-  [minY]="70"
+  [style]="{ width: '780px', height: '500px' }"
   [maximizable]="true"
   [baseZIndex]="10000"
 >
-  <div class="camera">
-    <!-- <webcam
-      [height]="300"
-      [width]="300"
-      [trigger]="triggerObservable"
-      (imageCapture)="handleImage($event)"
-      *ngIf="showWebcam"
-      [allowCameraSwitch]="allowCameraSwitch"
-      [switchCamera]="nextWebcamObservable"
-      [videoOptions]="videoOptions"
-      [imageQuality]="1"
-      (cameraSwitched)="cameraWasSwitched($event)"
-      (initError)="handleInitError($event)"
-    ></webcam> -->
-    <div id="my_camera" style="width:320px; height:240px;"></div>
+<div class="row" style="height: 360px">
+  <div class="col" id="my_camera">
+
   </div>
-  <div class="snapshot" id="my_result">
-    
+  <div class="col">
+    <h5>Captured Image</h5>
+    <div style="text-align: center"> 
+      <span *ngIf="(webcamImage === null)">Sample Image will appear here</span>
+      <ng-container *ngIf="(webcamImage !== null)">
+      <img [src]="webcamImage" class="img-responsive">
+
+      </ng-container>
+    </div>
   </div>
+</div>
+  
   <p-footer>
     <button type="button" (click)="capture()">Capture</button>
-    <button type="button" (click)="done()">Done</button>
+    <button
+      type="button"
+      (click)="done()"
+      [disabled]="!(webcamImage && webcamImage.length > 0)"
+    >
+      Done
+    </button>
     <button type="button" (click)="exit()">Cancel</button>
   </p-footer>
 </p-dialog>
