@@ -1,6 +1,6 @@
 # ImageCapture
 
-An Angluar component ready to use for taking picture from Webcam in a web Application using Media Object and default fallback Adobe player for IE browser.
+An Anular component ready to use for taking picture from Webcam in a web Application using Media Object and default fallback Adobe player for IE browser.
 
 ## Development server
 
