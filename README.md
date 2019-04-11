@@ -1,6 +1,6 @@
 # ImageCapture
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+An Angluar component ready to use for taking picture from Webcam in a web Application using Media Object and default fallback Adobe player for IE browser.
 
 ## Development server
 
